@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.developers.coroutinesrx.data.Response
 import com.developers.coroutinesrx.data.ResultState
-import com.developers.coroutinesrx.data.ResultsItem
+import com.developers.coroutinesrx.data.MovieResult
 import com.developers.coroutinesrx.data.remote.ApiInterface
 import com.developers.coroutinesrx.utils.zip
 import io.reactivex.Single
@@ -85,7 +85,7 @@ class ZipViewModel : ViewModel() {
      */
     fun zipCallsFromRx() {
         compositeDisposable += Single.zip(rxApiInterface.getPopularMovies(), rxApiInterface.getNowPlayingMovies(),
-            BiFunction<Response, Response, List<ResultsItem>> { popularMovies, nowPlayingMovies ->
+            BiFunction<Response, Response, List<MovieResult>> { popularMovies, nowPlayingMovies ->
                 filterResults(nowPlayingMovies, popularMovies)
             })
             .doOnSubscribe { moviesState.postValue(ResultState.Loading) }
@@ -102,8 +102,8 @@ class ZipViewModel : ViewModel() {
     /**
      * Filter movies results that have rating greater than 6.
      */
-    private fun filterResults(nowPlayingMoviesResults: Response, popularMoviesResults: Response): List<ResultsItem> {
-        val movies = mutableListOf<ResultsItem>()
+    private fun filterResults(nowPlayingMoviesResults: Response, popularMoviesResults: Response): List<MovieResult> {
+        val movies = mutableListOf<MovieResult>()
         val filteredNowPlayingMovies = nowPlayingMoviesResults.results.filter {
             isRatingMoreThanGiven(it.voteAverage, SIX_RATING)
         }

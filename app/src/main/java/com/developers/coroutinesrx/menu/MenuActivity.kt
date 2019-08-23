@@ -12,6 +12,7 @@ import com.developers.coroutinesrx.data.menu.Menu
 import com.developers.coroutinesrx.data.menu.MenuNames
 import com.developers.coroutinesrx.databinding.ActivityMenuBinding
 import com.developers.coroutinesrx.exception.ExceptionActivity
+import com.developers.coroutinesrx.state.RxStateManagement
 import com.developers.coroutinesrx.utils.intentTo
 import com.developers.coroutinesrx.zip.ZipCallsActivity
 
@@ -26,7 +27,8 @@ class MenuActivity : AppCompatActivity() {
     private val menuList = listOf(
         Menu(MenuNames.PERFORMANCE_ANALYSIS.getMenuName()),
         Menu(MenuNames.EXCEPTION_HANDLING.getMenuName()),
-        Menu(MenuNames.ZIPPING.getMenuName())
+        Menu(MenuNames.ZIPPING.getMenuName()),
+        Menu(MenuNames.STATE_MANAGEMENT.getMenuName())
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +57,11 @@ class MenuActivity : AppCompatActivity() {
             }
             MenuNames.ZIPPING.getMenuName() -> {
                 intentTo(ZipCallsActivity::class.java) {
+                    putParcelable(MENU_KEY, menu)
+                }
+            }
+            MenuNames.STATE_MANAGEMENT.getMenuName() -> {
+                intentTo(RxStateManagement::class.java) {
                     putParcelable(MENU_KEY, menu)
                 }
             }

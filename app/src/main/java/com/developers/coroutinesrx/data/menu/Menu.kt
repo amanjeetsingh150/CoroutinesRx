@@ -21,6 +21,11 @@ enum class MenuNames {
         override fun getMenuName(): String {
             return "Zipping Calls"
         }
+    },
+    STATE_MANAGEMENT {
+        override fun getMenuName(): String {
+            return "State Management"
+        }
     };
 
     abstract fun getMenuName(): String

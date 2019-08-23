@@ -6,7 +6,7 @@ data class Response(
     val dates: Dates? = null,
     val page: Int? = null,
     val totalPages: Int? = null,
-    val results: List<ResultsItem> = emptyList(),
+    val results: List<MovieResult> = emptyList(),
     val totalResults: Int? = null
 ) : ResultMapper<Response> {
 
