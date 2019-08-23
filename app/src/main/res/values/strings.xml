@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CoroutinesRx</string>
+    <string name="characters_by_rx">Characters By Rx</string>
+    <string name="coroutines_characters">Coroutines Characters</string>
+    <string name="rx_exception_text">Rx Exception</string>
+    <string name="fetch_movies_from_rx_text">Fetch Movies from Rx</string>
+    <string name="zip_from_coroutines_text">Zip From Coroutines</string>
+    <string name="zip_calls_from_rxjava_text">Zip Calls from RxJava</string>
+    <string name="zip_from_flow_text">Zip From Flow</string>
+    <string name="rating_text">Rating:</string>
+    <string name="search_text">Search</string>
+</resources>
