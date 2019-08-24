@@ -5,7 +5,6 @@ import com.developers.coroutinesrx.utils.ApplicationError
 
 data class SearchEvent(
     val searchAction: SearchAction,
-    val searchTerm: String = "",
     val searchData: List<MovieResult> = emptyList(),
     val throwable: ApplicationError? = null
 )

@@ -4,6 +4,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable name="stateViewModel"
+                  type="com.developers.coroutinesrx.state.StateViewModel"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search_text"
+                android:onClick="@{() -> stateViewModel.loadData(searchEditText.getText().toString())}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/search_edit_text"
                 app:layout_constraintTop_toTopOf="parent"/>
