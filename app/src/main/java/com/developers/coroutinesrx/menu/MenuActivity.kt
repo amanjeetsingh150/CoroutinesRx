@@ -12,6 +12,7 @@ import com.developers.coroutinesrx.data.menu.Menu
 import com.developers.coroutinesrx.data.menu.MenuNames
 import com.developers.coroutinesrx.databinding.ActivityMenuBinding
 import com.developers.coroutinesrx.exception.ExceptionActivity
+import com.developers.coroutinesrx.state.CoroutinesStateManagement
 import com.developers.coroutinesrx.state.RxStateManagement
 import com.developers.coroutinesrx.utils.intentTo
 import com.developers.coroutinesrx.zip.ZipCallsActivity
@@ -28,17 +29,24 @@ class MenuActivity : AppCompatActivity() {
         Menu(MenuNames.PERFORMANCE_ANALYSIS.getMenuName()),
         Menu(MenuNames.EXCEPTION_HANDLING.getMenuName()),
         Menu(MenuNames.ZIPPING.getMenuName()),
-        Menu(MenuNames.STATE_MANAGEMENT.getMenuName())
+        Menu(MenuNames.RX_STATE_MANAGEMENT.getMenuName()),
+        Menu(MenuNames.COROUTINES_STATE_MANAGEMENT.getMenuName())
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewBinding = DataBindingUtil.setContentView<ActivityMenuBinding>(this, R.layout.activity_menu)
+        val viewBinding =
+            DataBindingUtil.setContentView<ActivityMenuBinding>(this, R.layout.activity_menu)
         menuViewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
         val menuListAdapter = MenuListAdapter {
             navigateToMenu(it)
         }
-        viewBinding.menuRecyclerView.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
+        viewBinding.menuRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                RecyclerView.VERTICAL
+            )
+        )
         viewBinding.menuListAdapter = menuListAdapter
         menuListAdapter.submitList(menuList)
     }
@@ -60,8 +68,13 @@ class MenuActivity : AppCompatActivity() {
                     putParcelable(MENU_KEY, menu)
                 }
             }
-            MenuNames.STATE_MANAGEMENT.getMenuName() -> {
+            MenuNames.RX_STATE_MANAGEMENT.getMenuName() -> {
                 intentTo(RxStateManagement::class.java) {
+                    putParcelable(MENU_KEY, menu)
+                }
+            }
+            MenuNames.COROUTINES_STATE_MANAGEMENT.getMenuName() -> {
+                intentTo(CoroutinesStateManagement::class.java) {
                     putParcelable(MENU_KEY, menu)
                 }
             }

@@ -25,14 +25,26 @@ class StateViewModel : ViewModel() {
                 searchStates.postValue(it)
             }, {
                 // handle errors here
-                searchStates.postValue(SearchEvent(SearchAction.FETCH_FAILED, emptyList(), it.toApplicationError()))
+                searchStates.postValue(
+                    SearchEvent(
+                        searchAction = SearchAction.FETCH_FAILED,
+                        searchData = emptyList(),
+                        throwable = it.toApplicationError()
+                    )
+                )
             })
     }
 
     private fun getSearchResults(query: String): Observable<SearchEvent> {
         return moviesClient.searchMovies(query)
             .map { SearchEvent(SearchAction.FETCH_SUCCESSFUL, it.results) }
-            .onErrorReturn { SearchEvent(SearchAction.FETCH_FAILED, emptyList(), it.toApplicationError()) }
+            .onErrorReturn {
+                SearchEvent(
+                    searchAction = SearchAction.FETCH_FAILED,
+                    searchData = emptyList(),
+                    throwable = it.toApplicationError()
+                )
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

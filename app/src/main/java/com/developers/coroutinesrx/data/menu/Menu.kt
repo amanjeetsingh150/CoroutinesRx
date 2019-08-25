@@ -22,11 +22,17 @@ enum class MenuNames {
             return "Zipping Calls"
         }
     },
-    STATE_MANAGEMENT {
+    RX_STATE_MANAGEMENT {
         override fun getMenuName(): String {
-            return "State Management"
+            return "Reactive State Management"
+        }
+    },
+    COROUTINES_STATE_MANAGEMENT {
+        override fun getMenuName(): String {
+            return "Coroutines State Management"
         }
     };
+
 
     abstract fun getMenuName(): String
 }

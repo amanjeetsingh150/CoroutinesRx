@@ -4,6 +4,7 @@ import com.developers.coroutinesrx.BuildConfig
 import com.developers.coroutinesrx.SearchResult
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import io.reactivex.Observable
+import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,6 +19,11 @@ interface SearchApiInterface {
         @Query("api_key") key: String = BuildConfig.MOVIE_KEY
     ): Observable<SearchResult>
 
+    @GET("movie")
+    fun searchMoviesAsync(
+        @Query("query") query: String,
+        @Query("api_key") key: String = BuildConfig.MOVIE_KEY
+    ): Deferred<SearchResult>
 
     companion object Factory {
 

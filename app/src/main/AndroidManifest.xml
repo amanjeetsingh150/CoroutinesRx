@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.developers.coroutinesrx">
+        package="com.developers.coroutinesrx">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:allowBackup="true"
@@ -11,23 +11,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".state.RxStateManagement">
-        </activity>
-        <activity android:name=".zip.ZipCallsActivity">
-        </activity>
+        <activity android:name=".state.CoroutinesStateManagement"></activity>
+        <activity android:name=".state.RxStateManagement"></activity>
+        <activity android:name=".zip.ZipCallsActivity"></activity>
         <activity android:name=".menu.MenuActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".exception.ExceptionActivity">
-        </activity>
-        <activity android:name=".PerformanceActivity"/>
+        <activity android:name=".exception.ExceptionActivity"></activity>
+        <activity android:name=".PerformanceActivity" />
     </application>
 
 </manifest>
