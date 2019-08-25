@@ -8,6 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
@@ -52,6 +53,7 @@ class ExceptionViewModel : ViewModel() {
 
 
     suspend fun ApiInterface.getExceptionOnMoviesCall(): Int {
+        delay(100)
         return this.run { 5/0 }
     }
 }
