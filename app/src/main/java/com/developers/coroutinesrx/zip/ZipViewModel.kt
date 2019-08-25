@@ -69,7 +69,7 @@ class ZipViewModel : ViewModel() {
             val popularMovies = flowOf(coroutinesApiInterface.getPopularMoviesAsync())
             nowPlayingMoviesResults.zip(popularMovies) { popularMoviesResults, nowPlayingMovies ->
                 // Applying function to resultant calls
-                filterResults(nowPlayingMovies.await(), popularMoviesResults.await())
+                filterResults(nowPlayingMovies, popularMoviesResults)
             }.collect {
                 // Do something with your result
                 moviesState.postValue(ResultState.ResultClass(it))

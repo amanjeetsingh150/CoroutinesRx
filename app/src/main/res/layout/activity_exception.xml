@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="exceptionViewModel"
-                  type="com.developers.coroutinesrx.exception.ExceptionViewModel"/>
+
+        <variable
+                name="exceptionViewModel"
+                type="com.developers.coroutinesrx.exception.ExceptionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,17 +17,31 @@
 
 
         <Button
+                android:id="@+id/fetch_movies_rx_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/fetch_movies_rx_button"
-                android:text="@string/fetch_movies_from_rx_text"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginTop="18dp"
                 android:onClick="@{() -> exceptionViewModel.getMoviesFromRx()}"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/fetch_movies_from_rx_text"
+                app:layout_constraintEnd_toStartOf="@+id/fetch_movies_coroutines_button"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+                android:id="@+id/fetch_movies_coroutines_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="@{() -> exceptionViewModel.getMoviesFromCoroutines()}"
+                android:text="@string/fetch_movies_from_coroutines"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/fetch_movies_rx_button"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteY="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

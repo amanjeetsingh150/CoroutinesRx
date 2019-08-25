@@ -10,13 +10,14 @@ import io.reactivex.Single
 import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
+import java.lang.IllegalArgumentException
 
 
 class ExceptionRepository(private var apiInterface: ApiInterface) {
 
     fun getMovies(): Single<Result<Response>> {
         return apiInterface.getPopularMovies()
-            .map { it.asResult() }
+            .map { it.asResult().also { throw IllegalArgumentException() } }
             .onErrorReturn { Result.Error(it.toApplicationError()) }
     }
 
@@ -37,10 +38,14 @@ fun Throwable.toApplicationError(): ApplicationError {
     return when {
         this is HttpException -> {
             try {
-                val responseString = this.response().errorBody()?.string()
+                val responseString = this.response()?.errorBody()?.string()
                 val jsonObject = JSONObject(responseString).getJSONObject("meta")
 
-                ApplicationError(ErrorType.SERVER, jsonObject.getInt("code"), jsonObject.getString("errorDetail"))
+                ApplicationError(
+                    ErrorType.SERVER,
+                    jsonObject.getInt("code"),
+                    jsonObject.getString("errorDetail")
+                )
             } catch (e: Exception) {
                 ApplicationError(ErrorType.SERVER)
             }

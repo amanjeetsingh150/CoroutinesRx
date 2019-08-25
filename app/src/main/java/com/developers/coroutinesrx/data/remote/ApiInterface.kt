@@ -33,16 +33,16 @@ interface ApiInterface {
     ): Single<Response>
 
     @GET("popular")
-    fun getPopularMoviesAsync(
+    suspend fun getPopularMoviesAsync(
         @Query("page") page: Int = 1,
         @Query("api_key") key: String = BuildConfig.MOVIE_KEY
-    ): Deferred<Response>
+    ): Response
 
     @GET("now_playing")
-    fun getNowPlayingMoviesAsync(
+    suspend fun getNowPlayingMoviesAsync(
         @Query("page") page: Int = 1,
         @Query("api_key") key: String = BuildConfig.MOVIE_KEY
-    ): Deferred<Response>
+    ): Response
 
     companion object Factory {
 

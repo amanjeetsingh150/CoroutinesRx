@@ -1,46 +1,57 @@
 package com.developers.coroutinesrx.exception
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.developers.coroutinesrx.data.Response
+import androidx.lifecycle.viewModelScope
 import com.developers.coroutinesrx.data.Result
 import com.developers.coroutinesrx.data.remote.ApiInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
-import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
+import java.lang.IllegalStateException
 
 
 class ExceptionViewModel : ViewModel() {
 
-    private val apiInterface: ApiInterface by lazy {
-        ApiInterface.asRxJavaClient()
-    }
+    private val apiInterface: ApiInterface by lazy { ApiInterface.asRxJavaClient() }
+    private val coroutinesApiInterface: ApiInterface by lazy { ApiInterface.asCoroutinesClient() }
+
     private val exceptionRepository: ExceptionRepository = ExceptionRepository(apiInterface)
     private val disposables = CompositeDisposable()
 
     fun getMoviesFromRx() {
-//        disposables += exceptionRepository.getMovies()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeBy(onNext = {
-//                when (it) {
-//                    is Result.Error -> {
-//                        Log.d("ExceptionViewModel ", "Exception Model ${it.exception}")
-//                    }
-//                    is Result.Success -> {
-//                        Log.d("ExceptionViewModel ", "Data Model ${it.data}")
-//                    }
-//                }
-//            },
-//                onError = {
-//                    Log.d("ExceptionViewModel ", "Exception Model")
-//                })
+        disposables += exceptionRepository.getMovies()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                when (it) {
+                    is Result.Success -> {
+
+                    }
+                    is Result.Error -> {
+
+                    }
+                }
+            }, {
+
+            })
+    }
+
+    fun getMoviesFromCoroutines() {
+        viewModelScope.launch {
+            val result = coroutinesApiInterface.getExceptionOnMoviesCall()
+        }
     }
 
     override fun onCleared() {
         super.onCleared()
         disposables.clear()
+    }
+
+
+    suspend fun ApiInterface.getExceptionOnMoviesCall(): Int {
+        return this.run { 5/0 }
     }
 }
