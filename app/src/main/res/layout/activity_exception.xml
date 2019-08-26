@@ -20,13 +20,10 @@
                 android:id="@+id/fetch_movies_rx_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:onClick="@{() -> exceptionViewModel.getMoviesFromRx()}"
                 android:text="@string/fetch_movies_from_rx_text"
-                app:layout_constraintEnd_toStartOf="@+id/fetch_movies_coroutines_button"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,14 +31,11 @@
                 android:id="@+id/fetch_movies_coroutines_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:onClick="@{() -> exceptionViewModel.getMoviesFromCoroutines()}"
                 android:text="@string/fetch_movies_from_coroutines"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/fetch_movies_rx_button"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fetch_movies_rx_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

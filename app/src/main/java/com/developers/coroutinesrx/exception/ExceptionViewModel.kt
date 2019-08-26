@@ -1,17 +1,19 @@
 package com.developers.coroutinesrx.exception
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.developers.coroutinesrx.data.Result
 import com.developers.coroutinesrx.data.remote.ApiInterface
+import com.developers.coroutinesrx.utils.ApplicationError
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.lang.IllegalArgumentException
-import java.lang.IllegalStateException
 
 
 class ExceptionViewModel : ViewModel() {
@@ -22,6 +24,16 @@ class ExceptionViewModel : ViewModel() {
     private val exceptionRepository: ExceptionRepository = ExceptionRepository(apiInterface)
     private val disposables = CompositeDisposable()
 
+
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
+
+    }
+
+    /**
+     * Handle the predictable errors inside the [Result.Error] which can be used to produce a state
+     * to handle exceptions on UI side.
+     * Use onError for unpredictable errors as it risks terminating your stream of events.
+     */
     fun getMoviesFromRx() {
         disposables += exceptionRepository.getMovies()
             .subscribeOn(Schedulers.io())
@@ -29,10 +41,12 @@ class ExceptionViewModel : ViewModel() {
             .subscribe({
                 when (it) {
                     is Result.Success -> {
-
+                        // Handle success by getting list of movies
+                        val movies = it.data.results
                     }
                     is Result.Error -> {
-
+                        // Handle your errors here
+                        val applicationError = it.exception
                     }
                 }
             }, {
@@ -40,9 +54,16 @@ class ExceptionViewModel : ViewModel() {
             })
     }
 
+    /**
+     *
+     */
     fun getMoviesFromCoroutines() {
         viewModelScope.launch {
-            val result = coroutinesApiInterface.getExceptionOnMoviesCall()
+            try {
+                val result = async { coroutinesApiInterface.getExceptionOnMoviesCall() }.await()
+            } catch (exception: Exception) {
+
+            }
         }
     }
 
@@ -52,8 +73,11 @@ class ExceptionViewModel : ViewModel() {
     }
 
 
-    suspend fun ApiInterface.getExceptionOnMoviesCall(): Int {
+    /**
+     *  An extension function to mock an exception when you call any suspend function
+     */
+    private suspend fun ApiInterface.getExceptionOnMoviesCall(): Int {
         delay(100)
-        return this.run { 5/0 }
+        return this.run { 5 / 0 }
     }
 }
