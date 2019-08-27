@@ -26,12 +26,6 @@ interface ApiInterface {
         @Query("api_key") key: String = BuildConfig.MOVIE_KEY
     ): Single<Response>
 
-    @GET("top_rated")
-    fun getTopRatedMovies(
-        @Query("page") page: Int = 1,
-        @Query("api_key") key: String = BuildConfig.MOVIE_KEY
-    ): Single<Response>
-
     @GET("popular")
     suspend fun getPopularMoviesAsync(
         @Query("page") page: Int = 1,
