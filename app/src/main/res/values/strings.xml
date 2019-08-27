@@ -10,4 +10,5 @@
     <string name="rating_text">Rating:</string>
     <string name="search_text">Search</string>
     <string name="fetch_movies_from_coroutines">Fetch Movies &#10; from coroutines</string>
+    <string name="search_movies_hint_text">Search Movies</string>
 </resources>

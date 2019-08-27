@@ -38,16 +38,5 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-        <Button
-                android:id="@+id/rx_exception_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rx_exception_text"
-                android:onClick="@{() -> performanceViewModel.openExceptionActivity()}"
-                app:layout_constraintTop_toBottomOf="@+id/coroutines_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

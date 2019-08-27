@@ -1,6 +1,5 @@
 package com.developers.coroutinesrx.performance
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.developers.coroutinesrx.R
 import com.developers.coroutinesrx.data.FeedState
 import com.developers.coroutinesrx.databinding.ActivityMainBinding
-import com.developers.coroutinesrx.exception.ExceptionActivity
 
 class PerformanceActivity : AppCompatActivity() {
 
@@ -30,10 +28,6 @@ class PerformanceActivity : AppCompatActivity() {
                 }
                 is FeedState.DataState -> {
                     Toast.makeText(this, "Size: " + it.characters.size, Toast.LENGTH_SHORT).show()
-                }
-                is FeedState.ExceptionActivityState -> {
-                    val intent =  Intent(this, ExceptionActivity::class.java)
-                    startActivity(intent)
                 }
             }
         })
