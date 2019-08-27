@@ -1,5 +1,6 @@
 package com.developers.coroutinesrx.exception
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,10 +24,15 @@ class ExceptionViewModel : ViewModel() {
 
     private val exceptionRepository: ExceptionRepository = ExceptionRepository(apiInterface)
     private val disposables = CompositeDisposable()
+    private val exceptionMessage = MutableLiveData<ApplicationError>()
 
+    companion object{
+        private val TAG = ExceptionViewModel::class.java.simpleName.toString()
+    }
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
-
+        Log.d(TAG, "Catching from CEH")
+        exceptionMessage.postValue(exception.toApplicationError())
     }
 
     /**
@@ -46,23 +52,42 @@ class ExceptionViewModel : ViewModel() {
                     }
                     is Result.Error -> {
                         // Handle your errors here
-                        val applicationError = it.exception
+                        val applicationError = it.exception.copy(
+                            errorType = it.exception.errorType,
+                            code = null,
+                            message = "HANDLED ERROR "
+                        )
+                        exceptionMessage.postValue(applicationError)
                     }
                 }
             }, {
-
+                // Need to be implemented for the errors that can be unpredictable. For state which
+                // may end up this stream.
             })
     }
 
     /**
+     * This method needs both [CoroutineExceptionHandler] and try/catch as the relationship of
+     * coroutine is like:
      *
+     *          (A) [launch]
+     *          /               | Exception bubbling tendency is above to cancel launch coroutine.
+     *         /                | So you have to install a [CoroutineExceptionHandler] and for
+     *        /                 | await() as you will have result on the await() suspension point
+     *     (B) [async]          | you need try/catch install.
+     *
+     * B is child to A. for catching B await result try catch is there but as both parent and child are connected the CEH
+     * is also needed
+     * The exception will be handled by both catch and [CoroutineExceptionHandler] installed above.
      */
     fun getMoviesFromCoroutines() {
-        viewModelScope.launch {
+        viewModelScope.launch(coroutineExceptionHandler) {
             try {
-                val result = async { coroutinesApiInterface.getExceptionOnMoviesCall() }.await()
+                async { coroutinesApiInterface.getExceptionOnMoviesCall() }.await()
             } catch (exception: Exception) {
-
+                Log.d(TAG, "Catching from try catch")
+                val applicationError = exception.toApplicationError()
+                exceptionMessage.postValue(applicationError)
             }
         }
     }
@@ -80,4 +105,6 @@ class ExceptionViewModel : ViewModel() {
         delay(100)
         return this.run { 5 / 0 }
     }
+
+    fun getExceptionError() = exceptionMessage
 }
