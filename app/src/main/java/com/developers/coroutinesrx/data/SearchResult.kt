@@ -1,6 +1,5 @@
-package com.developers.coroutinesrx
+package com.developers.coroutinesrx.data
 
-import com.developers.coroutinesrx.data.MovieResult
 import com.google.gson.annotations.SerializedName
 
 data class SearchResult(

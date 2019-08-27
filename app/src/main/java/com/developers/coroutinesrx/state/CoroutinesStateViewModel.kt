@@ -23,7 +23,7 @@ class CoroutinesStateViewModel : ViewModel() {
 
         viewModelScope.launch {
 
-            flowOf(moviesClient.searchMoviesAsync(query).await())
+            flowOf(moviesClient.searchMoviesAsync(query))
                 .map { SearchEvent(SearchAction.FETCH_SUCCESSFUL, it.results) }
                 .catch {
                     SearchEvent(

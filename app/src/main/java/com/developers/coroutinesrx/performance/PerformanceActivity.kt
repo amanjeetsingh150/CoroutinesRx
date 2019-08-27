@@ -1,4 +1,4 @@
-package com.developers.coroutinesrx
+package com.developers.coroutinesrx.performance
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.developers.coroutinesrx.R
 import com.developers.coroutinesrx.data.FeedState
 import com.developers.coroutinesrx.databinding.ActivityMainBinding
 import com.developers.coroutinesrx.exception.ExceptionActivity
@@ -17,7 +18,9 @@ class PerformanceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val viewBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            R.layout.activity_main
+        )
         viewModel = ViewModelProviders.of(this).get(PerformanceViewModel::class.java)
         viewBinding.performanceViewModel = viewModel
         viewModel.getFeed().observe(this, Observer {

@@ -1,7 +1,7 @@
 package com.developers.coroutinesrx.data.remote
 
 import com.developers.coroutinesrx.BuildConfig
-import com.developers.coroutinesrx.SearchResult
+import com.developers.coroutinesrx.data.SearchResult
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
@@ -20,10 +20,10 @@ interface SearchApiInterface {
     ): Observable<SearchResult>
 
     @GET("movie")
-    fun searchMoviesAsync(
+    suspend fun searchMoviesAsync(
         @Query("query") query: String,
         @Query("api_key") key: String = BuildConfig.MOVIE_KEY
-    ): Deferred<SearchResult>
+    ): SearchResult
 
     companion object Factory {
 

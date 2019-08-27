@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.developers.coroutinesrx.PerformanceActivity
+import com.developers.coroutinesrx.performance.PerformanceActivity
 import com.developers.coroutinesrx.R
 import com.developers.coroutinesrx.data.menu.Menu
 import com.developers.coroutinesrx.data.menu.MenuNames

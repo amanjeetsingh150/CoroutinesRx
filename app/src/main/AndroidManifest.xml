@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".exception.ExceptionActivity"></activity>
-        <activity android:name=".PerformanceActivity" />
+        <activity android:name=".performance.PerformanceActivity" />
     </application>
 
 </manifest>
