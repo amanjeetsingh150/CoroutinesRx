@@ -6,14 +6,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.developers.coroutinesrx.performance.PerformanceActivity
 import com.developers.coroutinesrx.R
 import com.developers.coroutinesrx.data.menu.Menu
 import com.developers.coroutinesrx.data.menu.MenuNames
 import com.developers.coroutinesrx.databinding.ActivityMenuBinding
 import com.developers.coroutinesrx.exception.ExceptionActivity
+import com.developers.coroutinesrx.performance.PerformanceActivity
 import com.developers.coroutinesrx.state.CoroutinesStateManagement
 import com.developers.coroutinesrx.state.RxStateManagement
+import com.developers.coroutinesrx.state.UIBindingActivity
 import com.developers.coroutinesrx.utils.intentTo
 import com.developers.coroutinesrx.zip.ZipCallsActivity
 
@@ -30,7 +31,8 @@ class MenuActivity : AppCompatActivity() {
         Menu(MenuNames.EXCEPTION_HANDLING.getMenuName()),
         Menu(MenuNames.ZIPPING.getMenuName()),
         Menu(MenuNames.RX_STATE_MANAGEMENT.getMenuName()),
-        Menu(MenuNames.COROUTINES_STATE_MANAGEMENT.getMenuName())
+        Menu(MenuNames.COROUTINES_STATE_MANAGEMENT.getMenuName()),
+        Menu(MenuNames.UI_BINDINGS.getMenuName())
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +77,11 @@ class MenuActivity : AppCompatActivity() {
             }
             MenuNames.COROUTINES_STATE_MANAGEMENT.getMenuName() -> {
                 intentTo(CoroutinesStateManagement::class.java) {
+                    putParcelable(MENU_KEY, menu)
+                }
+            }
+            MenuNames.UI_BINDINGS.getMenuName() -> {
+                intentTo(UIBindingActivity::class.java) {
                     putParcelable(MENU_KEY, menu)
                 }
             }

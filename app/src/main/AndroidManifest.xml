@@ -11,9 +11,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".state.CoroutinesStateManagement"></activity>
-        <activity android:name=".state.RxStateManagement"></activity>
-        <activity android:name=".zip.ZipCallsActivity"></activity>
+        <activity android:name=".state.UIBindingActivity"></activity>
+        <activity android:name=".state.CoroutinesStateManagement" />
+        <activity android:name=".state.RxStateManagement" />
+        <activity android:name=".zip.ZipCallsActivity" />
         <activity android:name=".menu.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".exception.ExceptionActivity"></activity>
+        <activity android:name=".exception.ExceptionActivity" />
         <activity android:name=".performance.PerformanceActivity" />
     </application>
 

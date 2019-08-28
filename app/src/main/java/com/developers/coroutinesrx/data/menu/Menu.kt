@@ -31,6 +31,11 @@ enum class MenuNames {
         override fun getMenuName(): String {
             return "Coroutines State Management"
         }
+    },
+    UI_BINDINGS {
+        override fun getMenuName(): String {
+            return "UI Binding"
+        }
     };
 
 
