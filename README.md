@@ -2,7 +2,7 @@
 A display for battle of Asynchronousity between Coroutines and Rx. This repository consist of how the reactive world of 
 <b>RxJava</b> looks like in <b>Coroutines</b> world.
 
-Battles:
+<h3>Battles</h3>
 
 <UL>
 <LI>
