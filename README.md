@@ -40,9 +40,55 @@ flows is given <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/
 <H2>Performace comparison</H2>
 The performance comparison is done by performing same kind of operations with coroutines and Rx both. By using 2 different number of data set first with 10,000 iterations and then with 100,000 iterations. The operation is analogy of n number of data set on which you do some operations like flatmapping the result to get shows result and further adding to list. 
 <ul>
-<li>RxJava: The change in memory is shown belown in both case. The operation on the data with Rx can be seen <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L32">here</a>: 
+<li>RxJava: The change in memory is shown belown in both case. The operation on the data with Rx can be seen <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L32">here</a> and coroutines is <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L55">here</a>:<br><br>  
+<b>10,000 iterations</b>  
+<table>
+<tr>
+<th></th>
+<th>Base Memory</th>
+<th>Max change</th> 
+<th>Delta change</th>  
+</tr>
+<tr>
+  <td>Rx</td>
+  <td>72.6 MB</td>
+  <td>93.2 MB</td>
+  <td>20.6 MB</td>
+</tr>
+<tr>
+  <td>Coroutines</td>
+  <td>64.6 MB</td>
+  <td>83.4 MB</td>
+  <td>18.8 MB</td>
+</tr>  
+</table> 
+RxJava: <img src ="https://user-images.githubusercontent.com/12881364/64049743-7aa86c80-cb93-11e9-8724-ad94b06d9f5c.png"/> <br>
+Coroutines: <img src = "https://user-images.githubusercontent.com/12881364/64049869-e68ad500-cb93-11e9-8cf9-1c3320d08be7.png"/>  
 </li>
-<li></li>  
+<br><br>  
+<b>100,000 iterations</b> 
+<table>
+<tr>
+<th></th>
+<th>Base Memory</th>
+<th>Max change</th> 
+<th>Delta change</th>  
+</tr>
+<tr>
+  <td>Rx</td>
+  <td>65.5 MB</td>
+  <td>97.7 MB</td>
+  <td>32.2 MB</td>
+</tr>
+<tr>
+  <td>Coroutines</td>
+  <td>65 MB</td>
+  <td>89 MB</td>
+  <td>24 MB</td>
+</tr>  
+</table>   
+RxJava: <img src ="https://user-images.githubusercontent.com/12881364/64050073-982a0600-cb94-11e9-9d8e-c1a52e112b11.png"/> <br>
+Coroutines: <img src = "https://user-images.githubusercontent.com/12881364/64050118-af68f380-cb94-11e9-9cd9-a6a22fb62433.png"/>   
 </ul>  
 </LI>
 </UL>
