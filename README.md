@@ -103,5 +103,5 @@ Coroutines:<br>
 </LI>
 </UL>
 
-<h3>Contribution</h3>
+<h2>Contribution</h2>
 You are welcome to open PRs / issues, Give suggestions and feedback. This repository consist of the example of substitutions of coroutines in Rx worlds. So, write a short description on PR for that.  
