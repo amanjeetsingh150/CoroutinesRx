@@ -62,9 +62,9 @@ The performance comparison is done by performing same kind of operations with co
   <td>18.8 MB</td>
 </tr>  
 </table> 
-RxJava:<br><br> 
+RxJava:<br> 
 <img src ="https://user-images.githubusercontent.com/12881364/64049743-7aa86c80-cb93-11e9-8724-ad94b06d9f5c.png"/> <br>
-Coroutines:<br><br> 
+Coroutines:<br>
 <img src = "https://user-images.githubusercontent.com/12881364/64049869-e68ad500-cb93-11e9-8cf9-1c3320d08be7.png"/>  
 </li>
 <br><br>  
@@ -89,9 +89,9 @@ Coroutines:<br><br>
   <td>24 MB</td>
 </tr>  
 </table>   
-RxJava:<br><br> 
+RxJava:<br>
 <img src ="https://user-images.githubusercontent.com/12881364/64050073-982a0600-cb94-11e9-9d8e-c1a52e112b11.png"/> <br>
-Coroutines:<br><br> 
+Coroutines:<br> 
 <img src = "https://user-images.githubusercontent.com/12881364/64050118-af68f380-cb94-11e9-9cd9-a6a22fb62433.png"/>   
 </ul>  
 </LI>
