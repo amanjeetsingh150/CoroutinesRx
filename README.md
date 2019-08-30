@@ -39,8 +39,7 @@ flows is given <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/
 <LI>
 <H2>Performace comparison</H2>
 The performance comparison is done by performing same kind of operations with coroutines and Rx both. By using 2 different number of data set first with 10,000 iterations and then with 100,000 iterations. The operation is analogy of n number of data set on which you do some operations like flatmapping the result to get shows result and further adding to list. 
-<ul>
-<li>The change in memory is shown belown in both case. The operation on the data with Rx can be seen <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L32">here</a> and coroutines is <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L55">here</a>:<br><br>  
+The change in memory is shown belown in both case. The operation on the data with Rx can be seen <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L32">here</a> and coroutines is <a href = "https://github.com/amanjeetsingh150/CoroutinesRx/blob/master/app/src/main/java/com/developers/coroutinesrx/performance/PerformanceViewModel.kt#L55">here</a>:<br><br>  
 <b>10,000 iterations</b>  
 <table>
 <tr>
@@ -92,7 +91,6 @@ Coroutines:<br>
 RxJava:<br>
 <img src ="https://user-images.githubusercontent.com/12881364/64050073-982a0600-cb94-11e9-9d8e-c1a52e112b11.png"/> <br>
 Coroutines:<br> 
-<img src = "https://user-images.githubusercontent.com/12881364/64050118-af68f380-cb94-11e9-9cd9-a6a22fb62433.png"/>   
-</ul>  
+<img src = "https://user-images.githubusercontent.com/12881364/64050118-af68f380-cb94-11e9-9cd9-a6a22fb62433.png"/>    
 </LI>
 </UL>
