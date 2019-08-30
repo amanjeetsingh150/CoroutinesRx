@@ -93,4 +93,12 @@ RxJava:<br>
 Coroutines:<br> 
 <img src = "https://user-images.githubusercontent.com/12881364/64050118-af68f380-cb94-11e9-9cd9-a6a22fb62433.png"/>    
 </LI>
+<LI>
+<H2>Future tasks:</H2>
+<ul>
+  <li>The substitution of callbacks.</li>  
+  <li>The ui bindings</li>
+  <li>Proper documentation</li>
+</ul>  
+</LI>
 </UL>
