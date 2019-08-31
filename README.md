@@ -1,6 +1,8 @@
 # CoroutinesRx
 A display for battle of Asynchronousity between Coroutines and Rx. This repository consist of how the reactive world of 
-<b>RxJava</b> looks like in <b>Coroutines</b> world.
+<b>RxJava</b> looks like in <b>Coroutines</b> world. 
+
+<b>SpeakerDeck Link</b>: https://speakerdeck.com/amanjeetsingh150/coroutines-and-rx-a-battle-towards-asynchronicity
 
 <h1>Battles</h1>
 
